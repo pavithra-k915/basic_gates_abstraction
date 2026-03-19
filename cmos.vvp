@@ -1,0 +1,36 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_01203970 .scope module, "cmos_inverter_tb" "cmos_inverter_tb" 2 1;
+ .timescale 0 0;
+v01204EC8_0 .var "A", 0 0;
+RS_008518BC .resolv tri, L_01205108, L_012051E8, C4<z>, C4<z>;
+v01204F20_0 .net8 "Z", 0 0, RS_008518BC; 2 drivers, strength-aware
+S_012032D8 .scope module, "uut" "cmos_inverter" 2 6, 3 1, S_01203970;
+ .timescale 0 0;
+L_01205108 .functor PMOS 1, C8<771>, v01204EC8_0, C4<0>, C4<0>;
+L_012051E8 .functor NMOS 1, C8<770>, v01204EC8_0, C4<0>, C4<0>;
+v01203360_0 .net "A", 0 0, v01204EC8_0; 1 drivers
+v012033B8_0 .net8 "GND", 0 0, C8<770>; 1 drivers, strength-aware
+v01204E18_0 .net8 "Vdd", 0 0, C8<771>; 1 drivers, strength-aware
+v01204E70_0 .alias "Z", 0 0, v01204F20_0;
+    .scope S_01203970;
+T_0 ;
+    %vpi_call 2 8 "$dumpfile", "cmos_inverter.vcd";
+    %vpi_call 2 9 "$dumpvars", 1'sb0, S_01203970;
+    %set/v v01204EC8_0, 0, 1;
+    %delay 1, 0;
+    %set/v v01204EC8_0, 1, 1;
+    %delay 20, 0;
+    %vpi_call 2 14 "$finish";
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "cmos_inverter_tb.v";
+    "cmos_inverter.v";

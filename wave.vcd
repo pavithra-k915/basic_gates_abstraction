@@ -1,0 +1,67 @@
+$date
+	Thu Mar 19 17:35:26 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module tb_basic_gates $end
+$var wire 1 ! AND_out $end
+$var wire 1 " NAND_out $end
+$var wire 1 # NOR_out $end
+$var wire 1 $ NOT_out $end
+$var wire 1 % OR_out $end
+$var wire 1 & XNOR_out $end
+$var wire 1 ' XOR_out $end
+$var reg 1 ( A $end
+$var reg 1 ) B $end
+$scope module uut $end
+$var wire 1 * A $end
+$var wire 1 ! AND_out $end
+$var wire 1 + B $end
+$var wire 1 " NAND_out $end
+$var wire 1 # NOR_out $end
+$var wire 1 $ NOT_out $end
+$var wire 1 % OR_out $end
+$var wire 1 & XNOR_out $end
+$var wire 1 ' XOR_out $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0+
+0*
+0)
+0(
+0'
+1&
+0%
+1$
+1#
+1"
+0!
+$end
+#10
+0#
+0&
+1%
+1'
+1)
+1+
+#20
+0$
+0)
+0+
+1(
+1*
+#30
+0"
+1&
+1!
+0'
+1)
+1+
+#40

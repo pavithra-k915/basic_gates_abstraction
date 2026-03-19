@@ -1,0 +1,66 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00888890 .scope module, "tb_basic_gates" "tb_basic_gates" 2 1;
+ .timescale 0 0;
+v0088E8D0_0 .var "A", 0 0;
+v0088E7C8_0 .net "AND_out", 0 0, L_00884EF0; 1 drivers
+v0088E718_0 .var "B", 0 0;
+v0088E928_0 .net "NAND_out", 0 0, L_0088EAB8; 1 drivers
+v0088E5B8_0 .net "NOR_out", 0 0, L_0088EC78; 1 drivers
+v0088E878_0 .net "NOT_out", 0 0, L_0088EB60; 1 drivers
+v0088E2A0_0 .net "OR_out", 0 0, L_0088EAF0; 1 drivers
+v0088E6C0_0 .net "XNOR_out", 0 0, L_01064F58; 1 drivers
+v0088E980_0 .net "XOR_out", 0 0, L_01064C80; 1 drivers
+S_00888918 .scope module, "uut" "basic_gates" 2 6, 3 1, S_00888890;
+ .timescale 0 0;
+L_00884EF0 .functor AND 1, v0088E8D0_0, v0088E718_0, C4<1>, C4<1>;
+L_0088EAF0 .functor OR 1, v0088E8D0_0, v0088E718_0, C4<0>, C4<0>;
+L_0088EB60 .functor NOT 1, v0088E8D0_0, C4<0>, C4<0>, C4<0>;
+L_0088EA80 .functor AND 1, v0088E8D0_0, v0088E718_0, C4<1>, C4<1>;
+L_0088EAB8 .functor NOT 1, L_0088EA80, C4<0>, C4<0>, C4<0>;
+L_0088EC40 .functor OR 1, v0088E8D0_0, v0088E718_0, C4<0>, C4<0>;
+L_0088EC78 .functor NOT 1, L_0088EC40, C4<0>, C4<0>, C4<0>;
+L_01064C80 .functor XOR 1, v0088E8D0_0, v0088E718_0, C4<0>, C4<0>;
+L_01064EE8 .functor XOR 1, v0088E8D0_0, v0088E718_0, C4<0>, C4<0>;
+L_01064F58 .functor NOT 1, L_01064EE8, C4<0>, C4<0>, C4<0>;
+v00884DE8_0 .net "A", 0 0, v0088E8D0_0; 1 drivers
+v00884E40_0 .alias "AND_out", 0 0, v0088E7C8_0;
+v00884E98_0 .net "B", 0 0, v0088E718_0; 1 drivers
+v008832D8_0 .alias "NAND_out", 0 0, v0088E928_0;
+v00883330_0 .alias "NOR_out", 0 0, v0088E5B8_0;
+v00883388_0 .alias "NOT_out", 0 0, v0088E878_0;
+v0088E668_0 .alias "OR_out", 0 0, v0088E2A0_0;
+v0088E350_0 .alias "XNOR_out", 0 0, v0088E6C0_0;
+v0088E9D8_0 .alias "XOR_out", 0 0, v0088E980_0;
+v0088E3A8_0 .net *"_s10", 0 0, L_0088EC40; 1 drivers
+v0088E4B0_0 .net *"_s16", 0 0, L_01064EE8; 1 drivers
+v0088E820_0 .net *"_s6", 0 0, L_0088EA80; 1 drivers
+    .scope S_00888890;
+T_0 ;
+    %vpi_call 2 19 "$dumpfile", "wave.vcd";
+    %vpi_call 2 20 "$dumpvars", 1'sb0, S_00888890;
+    %set/v v0088E8D0_0, 0, 1;
+    %set/v v0088E718_0, 0, 1;
+    %delay 10, 0;
+    %set/v v0088E8D0_0, 0, 1;
+    %set/v v0088E718_0, 1, 1;
+    %delay 10, 0;
+    %set/v v0088E8D0_0, 1, 1;
+    %set/v v0088E718_0, 0, 1;
+    %delay 10, 0;
+    %set/v v0088E8D0_0, 1, 1;
+    %set/v v0088E718_0, 1, 1;
+    %delay 10, 0;
+    %vpi_call 2 27 "$finish";
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "basic_gate_tb.v";
+    "basic_gate.v";

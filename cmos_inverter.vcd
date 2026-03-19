@@ -1,0 +1,33 @@
+$date
+	Thu Mar 19 16:19:11 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module cmos_inverter_tb $end
+$var wire 1 ! Z $end
+$var reg 1 " A $end
+$scope module uut $end
+$var wire 1 # A $end
+$var wire 1 $ GND $end
+$var wire 1 % Vdd $end
+$var wire 1 ! Z $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+1%
+0$
+0#
+0"
+1!
+$end
+#1
+1"
+0!
+1#
+#21
