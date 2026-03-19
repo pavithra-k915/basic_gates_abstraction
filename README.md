@@ -1,106 +1,170 @@
-﻿# basic_gates_abstraction
-# 🔌 Basic Gates Abstraction in Verilog
+# 🔌 Digital Logic Design & CMOS Implementation (Verilog)
 
 ## 📌 Overview
 
-This project demonstrates the implementation of basic logic gates using different levels of abstraction in Verilog HDL.
-
-The goal is to understand how the same circuit can be described in multiple ways:
-
-* Behavioral Modeling
-* Dataflow Modeling
-* Structural (Gate-Level) Modeling
+This repository showcases my work in **Digital Electronics and VLSI Design** using Verilog HDL.
+It includes basic logic gates, Boolean expression implementations, CMOS concepts, and testbenches with waveform analysis.
 
 ---
 
-## 🧠 Abstraction Levels in Verilog
+## 🚀 Features
 
-### 🔹 Behavioral Modeling
-
-Describes **what the circuit does** using `always` blocks.
-
-### 🔹 Dataflow Modeling
-
-Describes **how data flows** using continuous assignments (`assign`).
-
-### 🔹 Structural Modeling
-
-Describes **how the circuit is built** using logic gates like `and`, `or`, etc.
+* ✔ Basic Logic Gates (AND, OR, NOT, NAND, NOR, XOR, XNOR)
+* ✔ Boolean Expression Design & Simplification
+* ✔ 4-Variable Logic Implementation
+* ✔ CMOS Inverter Design
+* ✔ Testbenches with VCD waveform support
 
 ---
 
-## ⚙️ Implemented Gates
+## 🧠 Basic Logic Gates (Verilog)
 
-* AND Gate (Behavioral)
-* AND Gate (Dataflow)
-* AND Gate (Structural)
+```verilog
+module basic_gates (
+    input A, B,
+    output AND_out,
+    output OR_out,
+    output NOT_out,
+    output NAND_out,
+    output NOR_out,
+    output XOR_out,
+    output XNOR_out
+);
+
+assign AND_out  = A & B;
+assign OR_out   = A | B;
+assign NOT_out  = ~A;
+assign NAND_out = ~(A & B);
+assign NOR_out  = ~(A | B);
+assign XOR_out  = A ^ B;
+assign XNOR_out = ~(A ^ B);
+
+endmodule
+```
 
 ---
 
-## 🧪 Testbench
+## 🔬 CMOS Design
 
-A testbench is included to verify the functionality of the AND gate using all input combinations.
+### CMOS Inverter
+
+```verilog
+module cmos_inverter (
+    input A,
+    output Y
+);
+
+assign Y = ~A;
+
+endmodule
+```
+
+### 📌 Concept
+
+* CMOS = Complementary MOS (PMOS + NMOS)
+* Low power and high efficiency
+* Used in real-world chip design
+
+---
+
+## 🧮 Boolean Expression Implementation
+
+### Example 1
+
+**Expression:**
+
+```
+ABC + B'C
+```
+
+**Simplified:**
+
+```
+C(A + B')
+```
+
+**Verilog:**
+
+```verilog
+assign Y = C & (A | ~B);
+```
+
+---
+
+### Example 2 (4-Variable)
+
+**Expression:**
+
+```
+ABCD + A'BC + B'D
+```
+
+**Simplified:**
+
+```
+BC(A' + D) + B'D
+```
+
+**Verilog:**
+
+```verilog
+assign Y = (B & C & (~A | D)) | (~B & D);
+```
+
+---
+
+## 🧪 Testbench Example
+
+```verilog
+initial begin
+    $dumpfile("wave.vcd");
+    $dumpvars(0, tb);
+
+    A=0; B=0; #10;
+    A=0; B=1; #10;
+    A=1; B=0; #10;
+    A=1; B=1; #10;
+
+    $finish;
+end
+```
+
+---
+
+## ⚙️ Tools Used
+
+* Verilog HDL
+* GTKWave (Waveform Viewer)
+* VS Code
 
 ---
 
 ## ▶️ How to Run
 
-### 1. Compile
-
 ```bash
-iverilog -o and.vvp and_behavioral.v and_behavioral_tb.v
-```
-
-### 2. Run Simulation
-
-```bash
-vvp and.vvp
-```
-
-### 3. View Waveform
-
-```bash
-gtkwave and_behavioral.vcd
+iverilog basic_gates.v tb_basic_gates.v
+vvp a.out
+gtkwave wave.vcd
 ```
 
 ---
 
-## 📂 Project Structure
+## 💡 Future Improvements
 
-```
-basic_gates_abstraction/
-│── and_behavioral.v
-│── and_dataflow.v
-│── and_structural.v
-│── and_behavioral_tb.v
-│── README.md
-```
+* Half Adder & Full Adder
+* Multiplexer & Demultiplexer
+* Sequential Circuits (Flip-Flops)
+* CMOS NAND/NOR Design
 
 ---
 
-## 🎯 Learning Outcome
+## 👨‍💻 Author
 
-* Understand Verilog abstraction levels
-* Learn different modeling styles
-* Gain hands-on experience with simulation tools (Icarus Verilog + GTKWave)
+Pavithra
 
 ---
 
-## 🚀 Future Improvements
+## ⭐ Note
 
-* Add OR, NOT, XOR gates
-* Include multiplexers and decoders
-* Add waveform screenshots
-* Expand to combinational circuits
+This repository is part of my journey toward mastering **Digital Design and VLSI Systems**.
 
----
-
-## 👩‍💻 Author
-
-**Pavithra**
-
----
-
-## ⭐ Support
-
-If you found this helpful, consider giving this repo a ⭐ on GitHub!
